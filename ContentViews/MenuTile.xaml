@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:contentViews="clr-namespace:MauiTestApp.ContentViews"
+             x:Class="MauiTestApp.ContentViews.Tile"
+             BindingContext="{Binding Source={RelativeSource Self}}">
+    <Border x:Name="ItemBorder"
+        StrokeThickness="0"
+        WidthRequest="100"
+        HeightRequest="100">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="8" />
+        </Border.StrokeShape>
+        <Grid x:Name="CountLayout"
+              IsClippedToBounds="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="4" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="ItemLayout"
+                  Grid.Column="0"
+                  Grid.ColumnSpan="3"
+                  Grid.Row="0"
+                  Grid.RowSpan="3"
+                  Padding="0"
+                  Margin="0"
+                  IsClippedToBounds="True"
+                  RowDefinitions="*,Auto">
+            <Border x:Name = "TextArea"
+                Grid.Row="1"
+                ZIndex="1"
+                StrokeThickness="0"
+                BackgroundColor="White"
+                Opacity=".85" 
+                MinimumHeightRequest="20"/>
+            <VerticalStackLayout x:Name="TextLayout"
+                Grid.Row="1"
+                ZIndex="2"
+                Padding="2, 2, 2, 1">
+                <Label x:Name="Title"
+                       Text="{Binding MenuItem.Title}"
+                       TextColor="DarkSlateGrey"
+                       HorizontalTextAlignment="Center"
+                       FontSize="14" />
+                <Label x:Name="Description"
+                       Text="{Binding MenuItem.Description}"
+                       TextColor="DimGray"
+                       HorizontalTextAlignment="Center"
+                       FontSize="12" />
+            </VerticalStackLayout>
+
+        </Grid>
+            <contentViews:CountBubble
+                x:Name="CountBubble"
+                Grid.Column="1"
+                Grid.Row="1"
+                ZIndex="1" />
+        </Grid>
+    </Border>
+</ContentView>
